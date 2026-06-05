@@ -10,8 +10,7 @@ jobs:
 
     steps: 
       -name: checkout source code
-      uses: actions/checkout@v4
+       uses: actions/checkout@v4
      
       -name: docker build
-      run: docker build -t resume-analyser .
-      
+       run: docker build -t resume-analyser .
