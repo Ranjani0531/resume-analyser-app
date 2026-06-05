@@ -1,0 +1,17 @@
+name:
+  Docker Ci CD piplelne
+on:
+  push:
+    branch:
+      -main
+jobs:
+  Docker:
+    runs-on: ubuntu-latest
+
+    steps: 
+      -name: checkout source code
+      uses: actions/checkout@v4
+     
+      -name: docker build
+      run: docker build -t resume-analyser .
+      
