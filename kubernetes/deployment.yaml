@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: resume-analyser-deployment
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: analyser-app
+    
+  template:
+    metadata:
+      labels: 
+        app: analyser-app
+    spec:
+      containers:
+      - name: resume-analyser-container
+        image: ranjani0531/resume-analyser:latest
+        ports:
+        - containerPort: 5000
