@@ -20,3 +20,16 @@ spec:
         image: ranjani0531/resume-analyser:latest
         ports:
         - containerPort: 5000
+
+        env:
+        - name: APP_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: APP_NAME
+              name: resume-analyser-config
+
+        - name: APP_ENV
+          valueFrom:
+            configMapKeyRef:
+              key: APP_ENV
+              name: resume-analyser-config

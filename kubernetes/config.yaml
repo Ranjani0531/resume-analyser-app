@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: resume-analyser-config
+data:
+  APP_NAME: "Resume analyser app"
+  APP_ENV: "Development"
+
+
+  

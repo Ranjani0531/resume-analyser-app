@@ -1,0 +1,40 @@
+name: Terraform Ci/Cd
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    name: deploy infra
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+
+      - name: configure aws
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{secrets.ACCESS_KEY}}
+          aws-secret-access-key: ${{secrets.SECRET_ACCESS}}
+          aws-region: ${{secrets.AWS_REGION}}
+
+      - name: Setup terraform
+        uses: hasicrop/setup-terraform@v3
+      - name: Terraform format
+        run: terraform fmt -recursive
+
+
+      - name: terraform init
+        run: terraform init
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan  

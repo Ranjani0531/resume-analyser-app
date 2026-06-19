@@ -1,4 +1,4 @@
-name: Docker Ci CD piplelne
+name:  Ci CD piplelne
 on:
   push:
     branches:

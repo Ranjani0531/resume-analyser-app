@@ -1,5 +1,11 @@
 from flask import Flask, request, jsonify, send_from_directory
 import os
+
+app_name = os.getenv("APP_NAME")
+app_env = os.getenv("APP_ENV")
+
+print(app_name)
+print(app_env)
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok =True)
