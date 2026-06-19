@@ -22,7 +22,9 @@ jobs:
           aws-region: ${{secrets.AWS_REGION}}
 
       - name: Setup terraform
-        uses: hasicrop/setup-terraform@v3
+        uses: hashicorp/setup-terraform@v3
+
+
       - name: Terraform format
         run: terraform fmt -recursive
 
