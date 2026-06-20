@@ -49,4 +49,4 @@ jobs:
       - name: automatte inventory file
         run: |
               WEB_IP=$(terraform output -raw webserver_public_ip)
-              sed -i "s/WEB_SERVER_IP/$WEB_IP/g" ansible/inventory.ini 
+              sed -i "s/WEB_SERVER_IP/$WEB_IP/g" resume-analyser/ansible/inventory.ini 
