@@ -8,6 +8,7 @@ resource "aws_instance" "webserver" {
   vpc_security_group_ids = [aws_security_group.nsg1.id]
 }
 
+
 resource "aws_instance" "Dbsever" {
   
   ami = "ami-02777684819ca2214"
