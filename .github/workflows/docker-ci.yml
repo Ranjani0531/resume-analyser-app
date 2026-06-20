@@ -1,4 +1,4 @@
-name:  Ci CD piplelne
+name: Ci CD piplelne
 on:
   push:
     branches:

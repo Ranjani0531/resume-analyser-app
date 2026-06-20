@@ -1,0 +1,22 @@
+---
+- hosts: web
+  become: true
+
+  tasks:
+    - name: docker install
+      apt:
+        name: docker.io
+        state: present
+    - name: python install
+      apt:
+        name: python3
+        state: present
+    - name: git install
+      apt:
+        name: git
+        state: present
+    - name: start docker
+      service:
+        name: docker.io
+        state: started
+        enabled: yes    

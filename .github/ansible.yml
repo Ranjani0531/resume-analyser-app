@@ -1,0 +1,26 @@
+name: provision infrastructure
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  provision:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout actions
+        uses: actions/checkout@v4
+
+      - name: install ansible
+        run: | 
+              sudo apt update
+              sudo apt install ansible -y 
+      - name: ssh Login
+        run: |
+              echo "${{secrets.SSH_PRIVATE_KEY}}" > key.pem
+              chmod 400 key.pem       
+      - name: ansible validate
+        run: ansible all -i ansible/inventory.ini --private-key key.pem -m ping
+      - name: ansible run
+        run: ansible-playbook -i ansible/inventory.ini --private-key key.pem playbook.yml
