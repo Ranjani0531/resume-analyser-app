@@ -46,16 +46,17 @@ jobs:
       - name: Check Terraform Output
         run: |
               terraform output
-      - name: automate inventory file
+      - name: Create Inventory File
         run: |
               WEB_IP=$(terraform output -raw webserver_public_ip)
 
-              echo "IP: $WEB_IP"
+              cat > ansible/inventory.ini << EOF
+              [web]
+              $WEB_IP
 
-              echo "Before:"
-              cat ansible/inventory.ini
-
-              sed -i "s|WEB_SERVER_IP|$WEB_IP|g" ansible/inventory.ini
-
-              echo "After:"
-              cat ansible/inventory.ini
+              [web:vars]
+              ansible_user=ubuntu
+              EOF
+      - name: Verify Inventory
+        run: |
+                cat ansible/inventory.ini       
