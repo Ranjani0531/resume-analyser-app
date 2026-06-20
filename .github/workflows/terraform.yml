@@ -43,16 +43,9 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan  
-      - name: Debug Paths
+      - name: Check Terraform Output
         run: |
-              echo "Current directory:"
-              pwd
-
-              echo "Repository structure:"
-              find . -type f
-
-              echo "Inventory search:"
-              find . -name "inventory.ini" 
+              terraform output
       - name: automatte inventory file
         run: |
               WEB_IP=$(terraform output -raw webserver_public_ip)
