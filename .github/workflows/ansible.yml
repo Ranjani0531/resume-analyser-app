@@ -4,7 +4,7 @@ on:
     branches:
       - main
 
-jobs:
+jobs: 
   provision:
     runs-on: ubuntu-latest
 
