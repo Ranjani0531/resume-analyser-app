@@ -20,11 +20,12 @@ jobs:
         run: |
               echo "${{secrets.SSH_PRIVATE_KEY}}" > key.pem
               chmod 400 key.pem       
-      - name: ansible validate
-        run: ansible all -i ansible/inventory.ini --private-key key.pem -m ping
       - name: Disable Host Key Checking
         run: |
               echo "[defaults]" > ansible.cfg
-              echo "host_key_checking = False" >> ansible.cfg  
+              echo "host_key_checking = False" >> ansible.cfg        
+      - name: ansible validate
+        run: ansible all -i ansible/inventory.ini --private-key key.pem -m ping
+        
       - name: ansible run
         run: ansible-playbook -i ansible/inventory.ini --private-key key.pem playbook.yml
