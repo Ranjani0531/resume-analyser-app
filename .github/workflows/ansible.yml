@@ -29,3 +29,5 @@ jobs:
         
       - name: ansible run
         run: ansible-playbook -i ansible/inventory.ini --private-key key.pem playbook.yml
+
+        
