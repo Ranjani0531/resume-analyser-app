@@ -4,25 +4,13 @@
   become: true
 
   tasks:
+    - name: Update packages
+      shell: dnf update -y
 
     - name: Install Docker
-      apt:
-        name: docker.io
-        state: present
-        update_cache: yes
-
-    - name: Install Git
-      apt:
-        name: git
-        state: present
-
-    - name: Install Python
-      apt:
-        name: python3
-        state: present
+      shell: dnf install docker -y
 
     - name: Start Docker
-      service:
-        name: docker
-        state: started
-        enabled: yes        
+      shell: |
+          systemctl enable docker
+          systemctl start docker
