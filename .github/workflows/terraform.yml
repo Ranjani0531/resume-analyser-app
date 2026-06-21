@@ -42,7 +42,7 @@ jobs:
         run: terraform plan -out=tfplan
 
       - name: Terraform Apply
-        #if: false
+        if: false
         run: terraform apply -auto-approve tfplan  
       - name: Check Terraform Output
         run: |
