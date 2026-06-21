@@ -11,6 +11,6 @@ resource "aws_subnet" "Resume_private_subnet" {
   cidr_block = "10.0.2.0/24"
 
   tags = {
-    Name = "private_subent"
+    Name = "private_subnet"
   }
 }
