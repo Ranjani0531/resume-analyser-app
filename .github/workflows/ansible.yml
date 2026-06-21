@@ -28,6 +28,6 @@ jobs:
         run: ansible all -i ansible/inventory.ini --private-key key.pem -m ping
         
       - name: ansible run
-        run: ansible-playbook -i ansible/inventory.ini --private-key key.pem playbook.yml
+        run: ansible-playbook -i ansible/inventory.ini --private-key key.pem ansible/playbook.yml
 
         
